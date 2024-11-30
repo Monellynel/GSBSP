@@ -1,32 +1,182 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+// Monica Elyse
+// 11 FEB 2024
+// If you Give a Mouse a Cookie
+ 
+#include <iostream>
+#include <iomanip>
+ 
+using namespace std;
+ 
+int main()
+{
+   //input variables
+   int noBoxesChocChip= 0;
+   int noBoxesSnickDoodle = 0;
+   int noBoxesGingerSpice = 0;
+   int noBoxesIcedSugar = 0;
+   char shippingRate = ' ';
+   int totalBoxes = 0;
+double bulkDiscount = 0.00;
+ 
+   //processing variables
+   const double priceOfChocChip = 4.25;
+   const double priceOfSnickDoodle = 3.75;
+   const double priceOfGingerSpice = 3.75;
+   const double priceOfIcedSugar = 4.00;
+   const double taxRate = 0.06;
+   const double discountPercent = 0.10;
+   const double smallShipFee = 10.00;
+   const double midShipFee = 7.50;
+   const double lrgShipFee = 5.00;
+   const double freeShip =  0.00;
+ 
+ 
+ 
+   //output variables
+   double totalChocChip = 0.0;
+   double totalSnickDoodle = 0.0;
+   double totalGingerSpice = 0.0;
+   double totalIcedSugar = 0.0;
+   double preTaxTotal = 0.0;
+   double salesTax = 0.0;
+   double saleAmount = 0.0;
+   double discountPrice = 0.00;
+ double shippingAmount = 0.00;
+double totalAmount = 0.0;
+ 
+ 
+   //get user info
+   cout<< "Enter the number of boxes of Chocolate Chip cookies: ";
+   cin >> noBoxesChocChip;
+ 
+   cout<< "Enter the number of boxes of Snicker Doodle cookies: ";
+   cin >> noBoxesSnickDoodle;
+ 
+   cout << "Enter the number of boxes of Ginger Spice cookies: ";
+   cin >> noBoxesGingerSpice;
+ 
+   cout << "Enter the number of boxes of Iced Sugar cookies: ";
+   cin >> noBoxesIcedSugar;
+ 
+if (noBoxesChocChip +noBoxesSnickDoodle + noBoxesGingerSpice + noBoxesIcedSugar >= 10)
+     cout << "You earned a 10% discount!" << endl;
+else
+{
+ cout << "You did not earn a 10% discount!" << endl;
+} // end if
+ 
+ 
+   // calculations
+   totalChocChip = priceOfChocChip * static_cast<int> (noBoxesChocChip);
+   totalSnickDoodle = priceOfSnickDoodle * static_cast<int>(noBoxesSnickDoodle);
+   totalGingerSpice = priceOfGingerSpice * static_cast<int> (noBoxesGingerSpice);
+   totalIcedSugar = priceOfIcedSugar * static_cast<int>(noBoxesIcedSugar);
+cout<< "How many boxes did you buy?: ";
+cin >> totalBoxes;
+if (totalBoxes >=10)  
+{
+ bulkDiscount = totalChocChip + totalSnickDoodle + totalGingerSpice + totalIcedSugar *  discountPercent;
+}
+else if (totalBoxes >10)
+{
+ bulkDiscount = totalChocChip + totalSnickDoodle + totalGingerSpice + totalIcedSugar *  discountPercent;
+}
+//end if
+ 
+   salesTax = preTaxTotal * taxRate;
+   saleAmount = salesTax + preTaxTotal;
+ 
+//determine shipping rate
+cout<<"Do you want your cookies shipped? (y/n): ";
+cin >> shippingRate;
+shippingRate = toupper(shippingRate);
+if (shippingRate == 'y' && totalBoxes <=5)
+{
+        shippingAmount = saleAmount + smallShipFee;
+}
+else
+if (shippingRate == 'Y' && totalBoxes <= 6)
+{
+        shippingAmount = saleAmount + midShipFee;
+}
+else
+if (shippingRate == 'Y' && totalBoxes <= 7)
+{
+        shippingAmount = saleAmount + midShipFee;
+}
+else
+if (shippingRate == 'Y' && totalBoxes <= 8)
+{
+        shippingAmount = saleAmount + midShipFee;
+}
+else
+if (shippingRate == 'Y' && totalBoxes <= 9)
+{
+        shippingAmount = saleAmount + midShipFee;
+}
+else
+if (shippingRate == 'Y' && totalBoxes <= 10)
+{
+        shippingAmount = saleAmount + midShipFee;
+}
+else
+if (shippingRate == 'Y' && totalBoxes <= 11)
+{
+        shippingAmount = saleAmount + lrgShipFee;
+}
+else
+if (shippingRate == 'Y' && totalBoxes <= 12)
+        shippingAmount = saleAmount + lrgShipFee;
+else
+if (shippingRate == 'Y' && totalBoxes <= 13)
+{
+        shippingAmount = saleAmount + lrgShipFee;
+}
+else
+if (shippingRate == 'Y' && totalBoxes <= 14)
+{
+        shippingAmount = saleAmount + lrgShipFee;
+}
+else
+   if (shippingRate == 'Y' && totalBoxes >= 15)
+   {
+shippingAmount = discountPrice + freeShip;
+   }
+//end if
+ 
+   // output
+ 
+ cout << fixed << setprecision (2) << endl;
+ 
+ if (noBoxesChocChip > 0)
+ {
+   cout << "Total for Chocolate Chip cookies = " << setw(8) <<totalChocChip << endl;
+ } //end if
+ if (noBoxesSnickDoodle > 0)
+ {
+   cout << "Total for Snicker Doodle Cookies = " << setw(8) <<totalSnickDoodle << endl;
+ } // end if
+ if (noBoxesGingerSpice > 0)
+ {
+   cout << "Total for Ginger Spice cookies   = " << setw(8) << totalGingerSpice << endl;
+ } //end if
+ if (noBoxesIcedSugar > 0)
+ {
+   cout << "Total for Iced Sugar cookies     = " << setw(8) << totalIcedSugar << endl;
+ }//end if
+ 
+preTaxTotal = totalChocChip + totalSnickDoodle + totalGingerSpice + totalIcedSugar * bulkDiscount + shippingAmount;
+salesTax = taxRate * preTaxTotal;
+totalAmount = preTaxTotal + salesTax + shippingAmount;
+ 
+   cout << "Pre Tax Total                    = " << setw(8)<< preTaxTotal << endl;
+   cout << "Sales Tax                        = " <<setw(8) << salesTax << endl;    
+   cout << "Shipping total                        = " <<setw(8) << shippingAmount << endl;    
+cout << "Bulk Discount                        = " <<setw(8) << bulkDiscount << endl;    
+cout << "Total Amount                        = " <<setw(8) << totalAmount << endl;    
+ 
+ 
+ //end if
+ 
+ return 0;
+}
